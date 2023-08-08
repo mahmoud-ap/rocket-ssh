@@ -1,0 +1,41 @@
+.full-base-page__desc blockquote {		
+	background: #fff3e0;		
+	padding: 15px;		
+	border-left: 5px solid #ff9800;		
+	margin-bottom: 25px;		
+}		
+.language-markup code{		
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;		
+}		
+.separ {		
+	display: inline-block;		
+	color: #fcb731;		
+	font-weight: 700;		
+	vertical-align: middle;		
+	margin: 0 15px;		
+}
+.speed_last:before {		
+	position: relative;		
+	top: -1px;		
+	display: inline-block;		
+	color: #fcb731;		
+	font-weight: 700;		
+	vertical-align: middle;		
+	content: '/';		
+	margin: 0 15px;		
+}
+.breads > span > span > a > span:hover {
+	color: #3ead3e;
+}
+.breads > span > span > a > span {
+	color: #2b468d;
+}
+.breads > span > span > a{
+  text-decoration: none;
+}	
+.language-markup {
+	background: #fff3e0;
+	padding: 15px;
+	border-left: 5px solid #ff9800;
+	margin-bottom: 25px;
+}

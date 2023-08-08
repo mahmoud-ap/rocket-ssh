@@ -1,0 +1,10 @@
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 300;
+  src: url("./YekanBakhFaNum-VF.ttf");
+}
+
+* {
+  font-variation-settings: "wght" 380;
+}
