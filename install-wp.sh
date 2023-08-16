@@ -42,7 +42,7 @@ sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
 cd $WP_DIR
 
-mv "$WP_DIR/wordpress/*" "$WP_DIR"
+mv "$WP_DIR/wordpress"/* "$WP_DIR"/
 rm -r "$WP_DIR/wordpress"
 
 # Download and unzip WordPress
