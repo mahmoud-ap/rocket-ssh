@@ -223,7 +223,7 @@ configAppche(){
             ErrorLog /error.log
             CustomLog /access.log combined
             <Directory '/var/www/html/example'>
-            AllowOverride All
+                AllowOverride All
             </Directory>
         </VirtualHost>
 
