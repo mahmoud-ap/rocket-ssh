@@ -42,13 +42,15 @@ sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
 cd $WP_DIR
 
-mv  "$WP_DIR/"wordpress/* "$WP_DIR/"
-rm -r "$WP_DIR/"wordpress
 
 # Download and unzip WordPress
 sudo wget $WP_URL
 sudo unzip latest.zip
 sudo rm latest.zip
+
+mv "$WP_DIR/"wordpress/* "$WP_DIR/"
+await
+rm -r "$WP_DIR/"wordpress
 
 # Create MySQL database and user
 mysql -u root -p -e "CREATE DATABASE $DB_NAME;"
