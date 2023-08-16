@@ -5,6 +5,16 @@ repoLink="https://github.com/mahmoud-ap/cyber-panel/raw/master/AdminPanel/1.zip"
 originalEnvFile="/var/www/html/panel/.env"
 panelDir="/var/www/html/panel"
 
+# Banner Path
+bannerPath="/var/www/html/panel/banner.txt"
+
+if [ ! -e "$bannerPath" ]; then
+    touch "$bannerPath"
+    echo "Banner file created: $bannerPath"
+else
+    echo "Banner file already exists: $bannerPath"
+fi
+
 # Backup original .env file contents to a variable
 originalEnvContent=$(cat "$originalEnvFile")
 

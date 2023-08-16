@@ -69,7 +69,6 @@ class Users extends BaseController
             $onlineUsers = UserShell::onlineUsers();
             foreach ($onlineUsers  as $username => $users) {
                 if (!in_array($username, $accessUsers)) {
-                    echo 11;
                     unset($onlineUsers[$username]);
                 }
             }

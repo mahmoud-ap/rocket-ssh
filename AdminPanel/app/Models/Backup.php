@@ -52,9 +52,11 @@ class Backup extends \App\Models\BaseModel
         $insetTraffics  = [];
         $adminUsername  = getAdminUsername();
 
+
+
         $invalidUsers = ["username", "root"];
         foreach ($usersValues  as $user) {
-            if (count($user) == 14) {
+            if (count($user) >= 14) {
                 $username   = !empty($user[1]) ? trim($user[1]) : "";
                 $password   = !empty($user[2]) ? trim($user[2]) : "";
                 $email      = !empty($user[3]) ? $user[3] : "";
@@ -85,6 +87,8 @@ class Backup extends \App\Models\BaseModel
                         $days = convertToEnNum($days);
                     }
 
+                    $traffic= intval($traffic);
+
                     $insetUsers[$username] = [
                         "username"          => $username,
                         "admin_uname"       => $adminUsername,
@@ -105,7 +109,8 @@ class Backup extends \App\Models\BaseModel
             }
         }
 
-
+print_R($usersValues);
+        die();
 
         foreach ($traficValues as $traffic) {
             if (count($traffic) == 4) {
@@ -175,7 +180,7 @@ class Backup extends \App\Models\BaseModel
     {
         $usersValues    = !empty($values["users"])      ? $values["users"] : [];
         $traficValues   = !empty($values["traffic"])    ? $values["traffic"] : [];
-     
+
 
 
         $insetUsers     = [];
@@ -252,7 +257,7 @@ class Backup extends \App\Models\BaseModel
                 }
             }
         }
-  
+
         try {
             $totalInsert =  db()::transaction(function () use ($insetUsers, $insetTraffics) {
 

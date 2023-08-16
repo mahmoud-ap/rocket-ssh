@@ -447,6 +447,7 @@ function calcDifferenceDate($startDate, $endDate)
             $result .= "ساله";
         }
     }
+    
     if ($months > 0) {
         $result .= "$months ";
         if ($days > 0) {
@@ -455,6 +456,7 @@ function calcDifferenceDate($startDate, $endDate)
             $result .= "ماهه";
         }
     }
+
     if ($days > 0) {
         $result .= "$days ";
         if ($months > 0) {

@@ -334,11 +334,8 @@ class UserShell
     public static function updateConnectedText($text)
     {
         $filePath = PATH  . DS . "banner.txt";
-
-        // $escapedContent = escapeshellarg($text); // Escape the content for safe shell execution
         $command = "echo $text > $filePath";
-        echo shell_exec($command);
-
+        shell_exec($command);
 
         $filePath = preg_quote($filePath, '/');
         $command = "sudo sed -i 's/^\(Banner\s*\).*$/\\1$filePath/' /etc/ssh/sshd_config";

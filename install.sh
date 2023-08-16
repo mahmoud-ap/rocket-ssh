@@ -88,11 +88,9 @@ installPackages(){
         apt autoremove -y
         echo "PHP Is Installed :)"
     else
-        rm -fr /etc/php/8.1/apache2/conf.d/00-ioncube.ini
         sudo NEETRESTART_MODE=a apt-get update --yes
         sudo apt-get -y install software-properties-common
-        apt-get install -y stunnel4 && apt-get install -y cmake && apt-get install -y screenfetch && apt-get install -y openssl
-        sudo apt-get -y install software-properties-common
+        apt-get install -y cmake && apt-get install -y screenfetch && apt-get install -y openssl
         sudo add-apt-repository ppa:ondrej/php -y
         apt-get install apache2 zip unzip net-tools curl mariadb-server -y
         apt-get install php php-cli php-mbstring php-dom php-pdo php-mysql -y
@@ -100,7 +98,6 @@ installPackages(){
         sudo apt-get install coreutils
         apt install php7.4 php7.4-mysql php7.4-xml php7.4-curl cron -y
     fi
-    curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     echo "/bin/false" >> /etc/shells
     echo "/usr/sbin/nologin" >> /etc/shells 
 }
@@ -139,15 +136,6 @@ ENDOFFILE
 
 }
 
-configStunnel(){
-    sudo mkdir /etc/stunnel
-cat << EOF > /etc/stunnel/stunnel.conf
-    cert = /etc/stunnel/stunnel.pem
-    [openssh]
-    accept = $sshtls_port
-    connect = 0.0.0.0:$port
-EOF
-}
 
 copyPanelRepo(){
 
@@ -267,7 +255,7 @@ configAppche(){
     <IfModule mod_gnutls.c>
         Listen 443
     </IfModule>" > /etc/apache2/ports.conf
-    echo '#Xpanel' > /var/www/cyberpanelport
+    echo '#CyberPanel' > /var/www/cyberpanelport
     sudo sed -i -e '$a\'$'\n''cyberpanelport '$serverPort /var/www/cyberpanelport
     wait
     ##Restart the apache server to use new port
@@ -394,7 +382,6 @@ checkRoot
 userInputs
 updateShhConfig
 installPackages
-configStunnel
 copyPanelRepo
 configAppche
 installNethogs
