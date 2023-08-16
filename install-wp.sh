@@ -17,6 +17,12 @@ WP_DIR="/var/www/html/wordpress"
 WP_URL="https://wordpress.org/latest.zip"
 
 
+# Check if the destination directory exists and remove it
+if [ -d "$WP_DIR" ]; then
+    echo "Removing existing $WP_DIR..."
+    sudo rm -r $WP_DIR
+fi
+
 # Create WordPress subfolder
 sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
