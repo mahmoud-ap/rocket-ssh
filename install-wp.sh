@@ -6,7 +6,7 @@ ivp4=$(curl -s ipv4.icanhazip.com)
 read -p "Enter the database username (default: wp_user): " DB_USER
 DB_USER=${DB_USER:-wp_user}
 
-read -s -p "Enter the database password (default: random password): " DB_PASS
+read -p "Enter the database password (default: random password): " DB_PASS
 DB_PASS=${DB_PASS:-$(openssl rand -base64 12)}
 
 read -p "Enter the database name (default: wp_database): " DB_NAME
@@ -34,7 +34,7 @@ sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
 cd $WP_DIR
 
-mv "$WP_DIR/wordpress/*" "$WP_DIR"/
+mv "$WP_DIR/wordpress/*" "$WP_DIR"
 rm -r "$WP_DIR/wordpress"
 
 # Download and unzip WordPress
@@ -69,5 +69,3 @@ echo "Database User: $DB_USER"
 echo "Database Password: $DB_PASS"
 echo "Please finish the setup by visiting: http://${ivp4}"
 
-# Clean up
-sudo apt-get clean
