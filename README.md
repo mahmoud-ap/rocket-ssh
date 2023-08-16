@@ -49,6 +49,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/cyber-panel/master/
 bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/cyber-panel/master/update-panel.sh --ipv4)
 ```
 
+# نصب وردپرس
+جهت نصب وردپرس دستور زیر را اجرا کنید.  بعد از نصب حتما اطلاعات را یادداشت کرده و در مراحل بعدی از آن استفاده کنید
+```
+bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/cyber-panel/master/install-wp.sh --ipv4)
+```
+
 # بلاک کردن آی پی های ایران
 
 جهت بلاک کردن آی پی های ایران از دستور زیر استفاده کنید
