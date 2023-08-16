@@ -23,6 +23,20 @@ if [ -d "$WP_DIR" ]; then
     sudo rm -r $WP_DIR
 fi
 
+# Check if the database and user exist and remove them
+EXIST_DB=$(mysql -u root -p -e "SELECT COUNT(*) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME='$DB_NAME';" | grep -v COUNT)
+if [ "$EXIST_DB" -eq 1 ]; then
+    echo "Removing existing database $DB_NAME..."
+    mysql -u root -p -e "DROP DATABASE $DB_NAME;"
+fi
+
+EXIST_USER=$(mysql -u root -p -e "SELECT COUNT(*) FROM mysql.user WHERE user = '$DB_USER';" | grep -v COUNT)
+if [ "$EXIST_USER" -eq 1 ]; then
+    echo "Removing existing user $DB_USER..."
+    mysql -u root -p -e "DROP USER '$DB_USER'@'localhost';"
+fi
+
+
 # Create WordPress subfolder
 sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
