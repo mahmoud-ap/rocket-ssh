@@ -63,8 +63,8 @@ sudo find . -type f -exec chmod 644 {} \;
 sudo chown -R www-data:www-data .
 
 # Update Apache configuration to point to the WordPress folder
-sudo sed -i "s|DocumentRoot /var/www/html/wp|DocumentRoot $WP_DIR|" /etc/apache2/sites-available/000-default.conf
-sudo sed -i "s|<Directory '/var/www/html/wp'>|<Directory '$WP_DIR'>|" /etc/apache2/sites-available/000-default.conf
+sudo sed -i "s|DocumentRoot /var/www/html/example|DocumentRoot $WP_DIR|" /etc/apache2/sites-available/000-default.conf
+sudo sed -i "s|<Directory '/var/www/html/example'>|<Directory '$WP_DIR'>|" /etc/apache2/sites-available/000-default.conf
 
 # Restart Apache
 sudo systemctl restart apache2
