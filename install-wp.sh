@@ -13,7 +13,7 @@ read -p "Enter the database name (default: wp_database): " DB_NAME
 DB_NAME=${DB_NAME:-wp_database}
 
 # Specify the WordPress folder location
-WP_DIR="/var/www/html/wp"
+WP_DIR="/var/www/html/wordpress"
 WP_URL="https://wordpress.org/latest.zip"
 
 # Check if the database and user exist and remove them
@@ -34,6 +34,9 @@ sudo mkdir -p $WP_DIR
 sudo chown -R www-data:www-data $WP_DIR
 cd $WP_DIR
 
+mv "$WP_DIR/wordpress/*" "$WP_DIR"/
+rm -r "$WP_DIR/wordpress"
+
 # Download and unzip WordPress
 sudo wget $WP_URL
 sudo unzip latest.zip
@@ -45,11 +48,6 @@ mysql -u root -p -e "CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS'
 mysql -u root -p -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';"
 mysql -u root -p -e "FLUSH PRIVILEGES;"
 
-# # Create wp-config.php
-# sudo cp wp-config-sample.php wp-config.php
-# sudo sed -i "s/database_name_here/$DB_NAME/" wp-config.php
-# sudo sed -i "s/username_here/$DB_USER/" wp-config.php
-# sudo sed -i "s/password_here/$DB_PASS/" wp-config.php
 
 # Set file permissions
 sudo find . -type d -exec chmod 755 {} \;
@@ -57,11 +55,12 @@ sudo find . -type f -exec chmod 644 {} \;
 sudo chown -R www-data:www-data .
 
 # Update Apache configuration to point to the WordPress folder
-sudo sed -i "s|DocumentRoot /var/www/html/example|DocumentRoot $WP_DIR|" /etc/apache2/sites-available/000-default.conf
-sudo sed -i "s|<Directory '/var/www/html/example'>|<Directory '$WP_DIR'>|" /etc/apache2/sites-available/000-default.conf
+sudo sed -i "s|DocumentRoot /var/www/html/wp|DocumentRoot $WP_DIR|" /etc/apache2/sites-available/000-default.conf
+sudo sed -i "s|<Directory '/var/www/html/wp'>|<Directory '$WP_DIR'>|" /etc/apache2/sites-available/000-default.conf
 
 # Restart Apache
 sudo systemctl restart apache2
+await
 
 # Display database information to the user
 echo "WordPress installation in subfolder is complete!"
