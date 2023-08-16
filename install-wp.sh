@@ -48,8 +48,7 @@ sudo wget $WP_URL
 sudo unzip latest.zip
 sudo rm latest.zip
 
-mv "$WP_DIR/wordpress/*" "$WP_DIR/"
-await
+mv "$WP_DIR/"wordpress/* "$WP_DIR/"
 rm -r "$WP_DIR/wordpress"
 
 # Create MySQL database and user
