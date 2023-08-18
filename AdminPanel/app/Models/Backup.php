@@ -109,8 +109,7 @@ class Backup extends \App\Models\BaseModel
             }
         }
 
-print_R($usersValues);
-        die();
+
 
         foreach ($traficValues as $traffic) {
             if (count($traffic) == 4) {
