@@ -15,7 +15,7 @@ userInputs(){
     read passwordTmp
 
     if [[ -n "${passwordTmp}" ]]; then
-     password=${passwordTmp}
+     password="${passwordTmp}"
     fi
 
     echo -e "\nPlease input UDPGW Port ."
