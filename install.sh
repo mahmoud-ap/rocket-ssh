@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ 
 userInputs(){
 
     echo -e "\n\n****** Welecome to installation of the Rocket SSH Panel ****** \n"
