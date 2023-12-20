@@ -163,10 +163,10 @@ done
     domainIP=$(curl -sm8 ipget.net/?ip="${domain}")
     
     if [[ $domainIP == $ipv6 ]]; then
-        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure
+        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure --force
     fi
     if [[ $domainIP == $ipv4 ]]; then
-        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --insecure
+        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --insecure --force
     fi
     
     if [[ -n $(echo $domainIP | grep nginx) ]]; then
@@ -191,7 +191,7 @@ done
 
 if command -v apt-get >/dev/null; then
 mkdir /etc/apache2/ssl/
-bash ~/.acme.sh/acme.sh --install-cert -d ${domain} --key-file /etc/apache2/ssl/${domain}.key --fullchain-file /etc/apache2/ssl/${domain}.crt --ecc 
+bash ~/.acme.sh/acme.sh --force --install-cert -d ${domain} --key-file /etc/apache2/ssl/${domain}.key --fullchain-file /etc/apache2/ssl/${domain}.crt --ecc
 
 cat > /etc/apache2/conf-available/ssl-params.conf << ENDOFFILE
 SSLCipherSuite EECDH+AESGCM:EDH+AESGCM
