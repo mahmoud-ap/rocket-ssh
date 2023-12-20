@@ -160,13 +160,14 @@ done
     
     [[ -z $domain ]] && red "Given domain is invalid. Please use example.com / sub.example.com" && exit 1
     green "The given domain name：$domain" && sleep 1
+    
     domainIP=$(getent hosts  ${domain} | awk '{ print $1 }')
     
     if [[ $domainIP == $ipv6 ]]; then
-        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure --force
+        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure
     fi
     if [[ $domainIP == $ipv4 ]]; then
-        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --insecure --force
+        bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --insecure
     fi
     
     if [[ -n $(echo $domainIP | grep nginx) ]]; then
@@ -185,7 +186,6 @@ done
             exit 1
         fi
     fi
-    
 
 
 
