@@ -162,6 +162,7 @@ done
     green "The given domain name：$domain" && sleep 1
     
     domainIP=$(getent hosts  ${domain} | awk '{ print $1 }')
+    echo "Domain IP: ${$domainIP}"
     
     if [[ $domainIP == $ipv6 ]]; then
         bash ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --listen-v6 --insecure
