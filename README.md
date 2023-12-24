@@ -46,16 +46,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/i
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/update-panel.sh --ipv4)
-```
-
-# ❤️ حمایت از ما
-
-TRX
-
-```
-TFU4acBKt1pQgog2s22pHp7WrXjJWjKZhH
-```
-
 ## فعال سازی SSL
 
 ```
@@ -73,10 +63,3 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/b
 # کانال تلگرام
 
 https://t.me/rocket_ssh
-
-# محیط نرم افزار
-
-![](images/1.png)
-![](images/2.png)
-![](images/3.png)
-![](images/4.png)
