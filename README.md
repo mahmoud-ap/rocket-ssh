@@ -46,6 +46,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/i
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/update-panel.sh --ipv4)
+```
 ## فعال سازی SSL
 
 ```
